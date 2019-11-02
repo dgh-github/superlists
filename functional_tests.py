@@ -16,7 +16,8 @@ class NewVisitorTest(unittest.TestCase):
 
     # 她注意到网页的标题和头部都包含“待办事项”这个词
     self.assertIn('待办事项',self.browser.title)
-    self.fail('终止测试!')
+    header_text = self.browser.find_element_by_tag_name('h1')
+    self.assertIn('待办事项', header_text)
 
     # 应用邀请她输入一个待办事项
     # 她在一个文本框中输入了“Buy peacock feathers”(购买孔雀羽毛)
@@ -26,6 +27,8 @@ class NewVisitorTest(unittest.TestCase):
     # 页面中又显示了一个文本框，可以输入其他的待办事项
     # 她输入了“Use peacock feathers to make a fly”(使用孔雀羽毛做假蝇
     # 伊迪丝做事很有条理
+    self.fail('终止测试!')
+
     # 页面再次更新，她的清单中显示了这两个待办事项
     # 伊迪丝想知道这个网站是否会记住她的清单 
     # 她看到网站为她生成了一个唯一的URL
