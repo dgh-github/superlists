@@ -14,9 +14,9 @@ class NewVisitorTest(unittest.TestCase):
     # 她去看了这个应用的首页
     self.browser.get('http://localhost:8000')
 
-    # 她注意到网页的标题和头部都包含“To-Do”这个词
-    self.assertIn('To-Do',self.browser.title)
-    self.fail('Finish the test!')
+    # 她注意到网页的标题和头部都包含“待办事项”这个词
+    self.assertIn('待办事项',self.browser.title)
+    self.fail('终止测试!')
 
     # 应用邀请她输入一个待办事项
     # 她在一个文本框中输入了“Buy peacock feathers”(购买孔雀羽毛)
