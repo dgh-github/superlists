@@ -11,7 +11,7 @@ class NewVisitorTest(unittest.TestCase):
   def tearDown(self):
     self.browser.quit()
 
-  def test_lists(self):
+  def test_can_start_a_list_and_retriever_it_later(self):
     # 伊迪丝听说有一个很酷的在线待办事项应用 
     # 她去看了这个应用的首页
     self.browser.get('http://localhost:8000')
@@ -41,14 +41,23 @@ class NewVisitorTest(unittest.TestCase):
 
     self.assertIn('1: 购买孔雀羽毛',[row.text for row in rows])
     # 页面中又显示了一个文本框，可以输入其他的待办事项
-    # 她输入了“Use peacock feathers to make a fly”(使用孔雀羽毛做假蝇
+    # 她输入了“使用孔雀羽毛做假蝇”
     # 伊迪丝做事很有条理
-    self.fail('终止测试!')
+    inputbox = self.browser.find_element_by_id('id_new_item')
+    inputbox.send_keys('使用孔雀羽毛做假蝇')
+    inputbox.send_keys(Keys.ENTER)
+    time.sleep(1)
 
     # 页面再次更新，她的清单中显示了这两个待办事项
+    table = self.browser.find_element_by_id('id_list_table')
+    rows = table.find_elements_by_tag_name('tr')
+    self.assertIn('1: 购买孔雀羽毛',[row.text for row in rows])
+    self.assertIn('2: 使用孔雀羽毛做假蝇',[row.text for row in rows])
+
     # 伊迪丝想知道这个网站是否会记住她的清单 
     # 她看到网站为她生成了一个唯一的URL
     # 而且页面中有一些文字解说这个功能
+    self.fail('终止测试!')
     # 她访问那个URL，发现她的待办事项列表还在 self): 
     # 她很满意，去睡觉了
 if __name__ == "__main__":
