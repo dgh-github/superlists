@@ -66,6 +66,7 @@ class NewVisitorTest(LiveServerTestCase):
     # self.fail('终止测试!')
     # 她访问那个URL，发现她的待办事项列表还在 self): 
     # 她很满意，去睡觉了
+    
   def test_multiple_users_can_start_lists_at_different_urls(self):
     # 伊迪丝新建一个待办事项清单
     self.browser.get(self.live_server_url)
@@ -92,7 +93,7 @@ class NewVisitorTest(LiveServerTestCase):
 
     # 弗朗西斯输入一个新待办事项，新建一个清单
     # 他不像伊迪丝那样兴趣盎然
-    inputbox = self.browser.find_elements_by_id('id_new_item')
+    inputbox = self.browser.find_element_by_id('id_new_item')
     inputbox.send_keys('购买牛奶')
     inputbox.send_keys(Keys.ENTER)
     self.wait_for_row_in_list_table('1: 购买牛奶')
